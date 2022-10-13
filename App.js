@@ -9,13 +9,13 @@ import {
   Layout,
   Text,
   TopNavigation,
-  Icon
+  Icon,
 } from "@ui-kitten/components";
 import { NavigationContainer } from "@react-navigation/native";
 import { EvaIconsPack } from "@ui-kitten/eva-icons";
 import logo from "./assets/imagens-coworking/logo.png";
-import List from "./pages/List"
-import Home from "./pages/Home"
+import List from "./pages/List";
+import Home from "./pages/Home";
 
 const { Navigator, Screen } = createBottomTabNavigator();
 
@@ -24,8 +24,8 @@ const BottomTabBar = ({ navigation, state }) => (
     selectedIndex={state.index}
     onSelect={(index) => navigation.navigate(state.routeNames[index])}
   >
-    <BottomNavigationTab title="" icon={<Icon name="pin-outline" />} />
-    <BottomNavigationTab title="Lista" icon={<Icon name="gift-outline" />} />
+    <BottomNavigationTab title="" icon={<Icon name="home" />} />
+    <BottomNavigationTab title="Lista" icon={<Icon name="file-text" />} />
   </BottomNavigation>
 );
 
@@ -46,10 +46,10 @@ const Header = () => {
   };
 
   const Logo = {
-    width: '100px',
-    height: '100px'
+    width: "100px",
+    height: "100px",
   };
-  
+
   return (
     <View style={headerStyles}>
       <Image style={Logo} source={logo} />
@@ -62,8 +62,26 @@ export default function App() {
     <>
       <IconRegistry icons={EvaIconsPack} />
       <ApplicationProvider {...eva} theme={eva.light}>
-        <Header />
-        <TopNavigation />
+        <>
+          <View
+            style={{
+              paddingTop: 40, 
+              height: 100,
+              borderBottomColor: 'grey',
+              borderBottomWidth: 1
+            }}
+          >
+            <Image 
+            style={{
+              flex: 1,
+              width: null,
+              height: null,
+              resizeMode: 'contain'
+            }}
+            source={logo} />
+          </View>
+        </>
+        {/* <TopNavigation /> */}
         <NavigationContainer>
           <TabNavigator />
         </NavigationContainer>
@@ -71,12 +89,3 @@ export default function App() {
     </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
