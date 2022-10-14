@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Icon, Input, Text } from "@ui-kitten/components";
-import { StyleSheet, View } from "react-native";
+import { View } from "react-native";
 import axios from "axios";
 import Coworking from "../components/Coworking";
 
@@ -8,15 +8,17 @@ const Home = () => {
   const [searchValue, setSearchValue] = useState("");
   const [coworkings, setCoworkings] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
-  const [isLoading, setLoading] = useState(false);
+  const [isLoading, setLoading] = useState(true);
 
   const renderIcon = (props) => <Icon {...props} name="search" />;
 
   useEffect(() => {
     axios.get("http://localhost:3000/coworkings")
       .then((response) => {
-        setCoworkings(response.data);
-        setSearchResults(response.data);
+        setTimeout(() => {
+          setCoworkings(response.data);
+          setSearchResults(response.data);
+        }, 700);
       })
       .finally(() => setLoading(false));
   }, [])
@@ -47,7 +49,7 @@ const Home = () => {
       </Text>
 
       <View>
-        {isLoading ? "Carregando..." : searchResults.map(data => <Coworking {...data} />)}
+        {isLoading ? <Text>Carregando...</Text> : searchResults.map(data => <Coworking {...data} />)}
       </View>
     </View>
   );

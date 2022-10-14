@@ -1,6 +1,7 @@
 import StarIcon from "../assets/imagens-coworking/Star4.png";
 import EmptyStarIcon from "../assets/imagens-coworking/Star19.png";
 import { Image, Text, TouchableOpacity, View } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 const imageStyle = {
   width: 80,
@@ -39,21 +40,24 @@ const renderStars = (rating) => {
   return stars
 }
 
-const Coworking = ({ name, address, rating, image }) => (
-  <TouchableOpacity>
-    <View style={componentStyle}>
-      <View>
-        <Image style={imageStyle} source={{ uri: image }}  />
-      </View>
-      <View>
-        <Text>{name}</Text>
-        <Text style={{ marginTop: 8 }}>{address}</Text>
-        <View style={ratingStyle}>
-          {renderStars(rating)}
+const Coworking = ({ id, name, address, rating, image }) => {
+  const navigation = useNavigation();
+  return (
+    <TouchableOpacity key={id} onPress={() => navigation.navigate("Reservar", { id })}>
+      <View style={componentStyle}>
+        <View>
+          <Image style={imageStyle} source={{ uri: image }}  />
+        </View>
+        <View>
+          <Text>{name}</Text>
+          <Text style={{ marginTop: 8 }}>{address}</Text>
+          <View style={ratingStyle}>
+            {renderStars(rating)}
+          </View>
         </View>
       </View>
-    </View>
-  </TouchableOpacity>
-);
+    </TouchableOpacity>
+  );
+};
 
 export default Coworking;

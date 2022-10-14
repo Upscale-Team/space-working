@@ -4,6 +4,7 @@
       "id": 1,
       "name": "Club Coworking | Paulista",
       "address": "Bela Vista, São Paulo",
+      "phoneNumber": "(11) 99999-9999",
       "rating": 4.2,
       "image": "https://i.ibb.co/3Rpj4cG/work1.jpg"
     },
@@ -11,6 +12,7 @@
       "id": 2,
       "name": "Wework | Barueri",
       "address": "Rio Negro 1477, Barueri",
+      "phoneNumber": "(11) 99999-9999",
       "rating": 3.5,
       "image": "https://i.ibb.co/RhJyPLk/work2.jpg"
     },
@@ -18,6 +20,7 @@
       "id": 3,
       "name": "Wework | Faria Lima",
       "address": "Av. Brig. Faria Lima 4055, São Paulo",
+      "phoneNumber": "(11) 99999-9999",
       "rating": 4,
       "image": "https://i.ibb.co/HKX0Fjx/work3.jpg"
     },
@@ -25,6 +28,7 @@
       "id": 4,
       "name": "Google for Startups Campus",
       "address": "Rua Coronel Oscar Porto 70, São Paulo",
+      "phoneNumber": "(11) 99999-9999",
       "rating": 4,
       "image": "https://i.ibb.co/Jcz2Fkf/work4.jpg"
     }

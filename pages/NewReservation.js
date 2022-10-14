@@ -5,14 +5,28 @@ import {
   SelectItem,
   Text,
 } from "@ui-kitten/components";
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { Image, View } from "react-native";
 import work1 from "../assets/imagens-coworking/work1.jpeg";
 
-const Space = () => {
-  const [selectedIndex, setSelectedIndex] = React.useState(new IndexPath(0));
+const NewReservation = ({ route }) => {
+  const [coworking, setCoworking] = useState(null);
+  const [isLoading, setLoading] = useState(true);
+  const [selectedIndex, setSelectedIndex] = useState(new IndexPath(0));
 
-  return (
+  useEffect(() => {
+    setLoading(true);
+    axios.get(`http://localhost:3000/coworkings/${route.params.id}`)
+      .then(response => {
+        setCoworking(response.data);
+        setLoading(false);
+      });
+  }, [route.params.id]);
+
+  console.log({ isLoading, coworking });
+
+  return isLoading ? <Text>Carregando...</Text> : (
     <View
       style={{
         height: "100%",
@@ -24,7 +38,7 @@ const Space = () => {
       }}
     >
       <View>
-        <Image style={{ width: 150, height: 150 }} source={work1} />
+        <Image style={{ width: 150, height: 150 }} source={{ uri: coworking.image }} />
       </View>
       <View
         style={{
@@ -42,25 +56,27 @@ const Space = () => {
             marginBottom: 16,
           }}
         >
-          Work Place
+          {coworking.name}
         </Text>
-        <Text style={{ fontWeight: "400", fontSize: 12, marginBottom: 16 }}>
-          Av. Paulista, 1842 - Conj. 155 e 158 - Cerqueira César, São Paulo -
-          SP, 01311-200 Telefone: (11) 4118-4662
+        <Text style={{ fontWeight: "400", fontSize: 12, textAlign: "center" }}>
+          {coworking.address}
         </Text>
         <Text
           style={{
             fontWeight: "400",
             fontSize: 12,
             textAlign: "center",
-            marginBottom: 13,
+            marginTop: 12
           }}
         >
           <Text style={{ fontWeight: "600" }}>Horário:</Text> Segunda à quinta -
           8h00 às 18h00 Sexta-feira - 8h00 às 17h00
         </Text>
-        <Text style={{ fontWeight: "400", fontSize: 12 }}>
+        <Text style={{ fontWeight: "400", fontSize: 12,marginTop: 12 }}>
           <Text style={{ fontWeight: "600" }}>Valor:</Text> R$00,00
+        </Text>
+        <Text style={{ fontWeight: "400", fontSize: 12, marginTop: 12 }}>
+          <Text style={{ fontWeight: "600" }}>Telefone:</Text> {coworking.phoneNumber}
         </Text>
       </View>
 
@@ -208,4 +224,4 @@ const Space = () => {
   );
 };
 
-export default Space;
+export default NewReservation;

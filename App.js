@@ -14,9 +14,9 @@ import {
 import { NavigationContainer } from "@react-navigation/native";
 import { EvaIconsPack } from "@ui-kitten/eva-icons";
 import logo from "./assets/imagens-coworking/logo.png";
-import List from "./pages/List";
+import Reservations from "./pages/Reservations";
 import Home from "./pages/Home";
-import Space from "./pages/Space";
+import NewReservation from "./pages/NewReservation";
 
 const { Navigator, Screen } = createBottomTabNavigator();
 
@@ -37,8 +37,8 @@ const TabNavigator = () => (
     tabBar={(props) => <BottomTabBar {...props} />}
   >
     <Screen name="Home" component={Home} />
-    <Screen name="Coworking" component={Space} />
-    <Screen name="Seus Coworking" component={List} />
+    <Screen name="Reservar" component={NewReservation} />
+    <Screen name="Reservas" component={Reservations} />
   </Navigator>
 );
 
