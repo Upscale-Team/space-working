@@ -6,7 +6,7 @@ const List = () => {
 
   return (
     <>
-      <Text>COMPONENTE DE LIST TELA DO ANDREW</Text>
+      <Text>COMPONENTE DE LIST TELA DO SAMUEL</Text>
     </>
   );
 }

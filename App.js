@@ -16,6 +16,7 @@ import { EvaIconsPack } from "@ui-kitten/eva-icons";
 import logo from "./assets/imagens-coworking/logo.png";
 import List from "./pages/List";
 import Home from "./pages/Home";
+import Space from "./pages/Space";
 
 const { Navigator, Screen } = createBottomTabNavigator();
 
@@ -25,6 +26,7 @@ const BottomTabBar = ({ navigation, state }) => (
     onSelect={(index) => navigation.navigate(state.routeNames[index])}
   >
     <BottomNavigationTab title="" icon={<Icon name="home" />} />
+    <BottomNavigationTab title="Coworking" icon={<Icon name="map" />} />
     <BottomNavigationTab title="Lista" icon={<Icon name="file-text" />} />
   </BottomNavigation>
 );
@@ -35,6 +37,7 @@ const TabNavigator = () => (
     tabBar={(props) => <BottomTabBar {...props} />}
   >
     <Screen name="Home" component={Home} />
+    <Screen name="Coworking" component={Space} />
     <Screen name="Seus Coworking" component={List} />
   </Navigator>
 );
