@@ -15,6 +15,7 @@
     "@react-navigation/native": "^6.0.13",
     "@ui-kitten/components": "^5.1.2",
     "@ui-kitten/eva-icons": "^5.1.2",
+    "axios": "^1.1.2",
     "expo": "~46.0.13",
     "expo-status-bar": "~1.4.0",
     "json-server": "^0.17.0",

@@ -1,5 +1,6 @@
-import StarIcon from "../../assets/imagens-coworking/Star4.png";
-import EmptyStarIcon from "../../assets/imagens-coworking/Star19.png";
+import StarIcon from "../assets/imagens-coworking/Star4.png";
+import EmptyStarIcon from "../assets/imagens-coworking/Star19.png";
+import { Image, Text, TouchableOpacity, View } from "react-native";
 
 const imageStyle = {
   width: 80,
@@ -24,21 +25,31 @@ const starRatingStyle = {
   height: 22,
 }
 
+const renderStars = (rating) => {
+  let stars = [];
+  for (let i = 0; i < 5; i++) {
+    stars.push(
+      <Image 
+        style={starRatingStyle} 
+        source={i < Math.floor(rating) ? StarIcon : EmptyStarIcon} 
+      />
+    )
+  }
+
+  return stars
+}
+
 const Coworking = ({ name, address, rating, image }) => (
   <TouchableOpacity>
     <View style={componentStyle}>
       <View>
-        <Image style={imageStyle} source={image} />
+        <Image style={imageStyle} source={{ uri: image }}  />
       </View>
       <View>
         <Text>{name}</Text>
         <Text style={{ marginTop: 8 }}>{address}</Text>
         <View style={ratingStyle}>
-          <Image style={starRatingStyle} source={StarIcon} />
-          <Image style={starRatingStyle} source={StarIcon} />
-          <Image style={starRatingStyle} source={StarIcon} />
-          <Image style={starRatingStyle} source={StarIcon} />
-          <Image style={starRatingStyle} source={EmptyStarIcon} />
+          {renderStars(rating)}
         </View>
       </View>
     </View>
