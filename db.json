@@ -1,0 +1,30 @@
+{
+  "coworkings": [
+    {
+      "id": 1,
+      "name": "Club Coworking | Paulista",
+      "address": "Bela Vista, São Paulo",
+      "rating": 4.2
+    },
+    {
+      "id": 2,
+      "name": "Wework | Barueri",
+      "address": "Rio Negro 1477, Barueri",
+      "rating": 3.5
+    },
+    {
+      "id": 3,
+      "name": "Wework | Faria Lima",
+      "address": "Av. Brig. Faria Lima 4055, São Paulo",
+      "rating": 4
+    }
+  ],
+  "reservations": [
+    {
+      "coworkingId": 2,
+      "startDate": "",
+      "endDate": "",
+      "paymentMethod": ""
+    }
+  ]
+}
